@@ -40,9 +40,9 @@ const contractorProjects = new Set([
 
 export default function ClientsPage() {
   return (
-    <main className="min-h-screen mt-40">
+    <main className="min-h-screen mt-20 lg:mt-36 bg-[#D4D4D4]">
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-slate-100">
+      <section className="relative overflow-hidden ">
         <div className="mx-auto max-w-7xl px-6 pt-10">
           <div className="max-w-3xl">
             <span className="mb-5 inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-600">
@@ -63,7 +63,7 @@ export default function ClientsPage() {
         </div>
 
         {/* Decorative background */}
-        <div className="pointer-events-none absolute -right-32 -top-32 h-80 w-80 rounded-full bg-slate-100 blur-3xl" />
+        {/* <div className="pointer-events-none absolute -right-32 -top-32 h-80 w-80 rounded-full bg-slate-100 blur-3xl" /> */}
       </section>
 
       {/* Clients */}
