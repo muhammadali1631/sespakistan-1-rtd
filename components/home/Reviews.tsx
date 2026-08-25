@@ -52,7 +52,7 @@ const Reviews = () => {
             <motion.div
               whileHover={{ y: -4, boxShadow: "0 8px 25px rgba(0,0,0,0.15)" }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className=" bg-[#033268]  text-white p-5 px-5 sm:px-8 flex flex-col justify-between space-y-5"
+              className=" bg-[#033268] h-60 text-white p-5 px-5 sm:px-8 flex flex-col justify-between space-y-5"
             >
               <div className="flex text-yellow-300">
               {Array.from({ length: item.rating }).map((_, index) => (

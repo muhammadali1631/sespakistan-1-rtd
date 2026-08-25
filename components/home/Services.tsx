@@ -81,14 +81,14 @@ const Services = () => {
                     <motion.div
                         whileHover={{ y: -6, boxShadow: "0 10px 30px rgba(0,0,0,0.12)" }}
                         transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                        className="bg-white rounded-t-2xl overflow-hidden"
+                        className="bg-white rounded-t-2xl overflow-hidden h-[450px]"
                     >
                       <Link href={item.link}>
                         <motion.div whileHover={{ scale: 1.03 }} transition={{ duration: 0.3 }}>
                             <Image src={item.image} alt={item.name} height={200} width={300} className="h-56 w-full object-cover"/>
                         </motion.div>
                         </Link>
-                        <div className="w-full px-4 sm:px-5 py-3 space-y-3">
+                        <div className="w-full px-4 sm:px-5 py-3 space-y-3 ">
                             <h4 className="font-bold text-center text-lg sm:text-xl">{item.name}</h4>
                             <p className="text-sm">{item.desc}</p>
                         </div>
