@@ -119,13 +119,15 @@ const MajorProjects = () => {
             <motion.div
               whileHover={{ scale: 1.08, rotate: 1 }}
               transition={{ type: "spring", stiffness: 300 }}
+              className="relative h-40 w-32 sm:h-72 sm:w-50 overflow-hidden rounded-3xl"
             >
               <Image
                 src={item.image}
-                height={300}
-                width={250}
+                fill
+                sizes="(max-width: 640px) 128px, 200px"
                 alt="Project"
-                className="object-cover bg-gray-300 h-40 w-32 sm:h-72 sm:w-50 rounded-3xl"
+                className="object-cover "
+                quality={90}
               />
             </motion.div>
           </StaggerItem>

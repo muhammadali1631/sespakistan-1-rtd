@@ -9,7 +9,7 @@ const Hero = () => {
     <section className="relative isolate mt-22 min-h-[580px] overflow-hidden sm:mt-26 lg:mt-32 lg:min-h-[550px]">
       {/* Background Image */}
       <Image
-        src="/home/hero2.avif"
+        src="/home/hero3.avif"
         alt="Modern corporate office"
         fill
         priority
