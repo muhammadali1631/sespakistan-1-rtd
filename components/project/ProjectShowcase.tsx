@@ -35,9 +35,10 @@ const ProjectShowcase = ({
     >
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {/* Main image */}
-        <FadeIn direction="left" className="relative order-1 aspect-[4/3] w-full overflow-hidden rounded-lg md:order-1 cursor-pointer" onClick={() => setSelectedImage(data.mainImage.src)}>
+        <FadeIn direction="left" className="relative order-1 aspect-[4/3] w-full overflow-hidden rounded-lg md:order-1 cursor-pointer" >
           <Image
             src={data.mainImage.src}
+            onClick={() => setSelectedImage(data.mainImage.src)}
             alt={data.mainImage.alt}
             fill
             className="object-cover"
