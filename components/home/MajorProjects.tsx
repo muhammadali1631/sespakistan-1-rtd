@@ -18,7 +18,7 @@ const ProjectImages = [
     image: "/home/major-project/new-image1.avif",
   },
   {
-    image: "/home/major-project/new-image2.avif",
+    image: "/home/major-project/new-2.jpeg",
   },
   {
     image: "/home/major-project/new-image3.avif",
@@ -31,7 +31,7 @@ const ProjectImages = [
   },
 
   {
-    image: "/home/major-project/new-image4.avif",
+    image: "/home/major-project/new-5.jpeg",
   },
   {
     image: "/home/major-project/major-project-img8.avif",
@@ -43,7 +43,7 @@ const ProjectImages = [
     image: "/home/major-project/new-image-9.avif",
   },
   {
-    image: "/home/major-project/new-image7.avif",
+    image: "/home/major-project/new-7.jpeg",
   },
 ];
 
@@ -126,8 +126,8 @@ const MajorProjects = () => {
                 fill
                 sizes="(max-width: 640px) 128px, 200px"
                 alt="Project"
-                className="object-cover "
-                quality={90}
+                className="object-cover object-top"
+                quality={100}
               />
             </motion.div>
           </StaggerItem>
