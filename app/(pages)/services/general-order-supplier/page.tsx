@@ -2,8 +2,9 @@
 
 import RelativeLinks from '@/components/RelativeLinks'
 import FixedImage from '@/components/services/FixedImage'
+import ImageLightbox from "@/components/ui/ImageLightbox";
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from "motion/react";
 import FadeIn from "@/components/motion/FadeIn";
 import StaggerContainer, { StaggerItem } from "@/components/motion/StaggerContainer";
@@ -19,6 +20,8 @@ const images = [
 ]
 
 const page = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
     <div className="mt-20 lg:mt-36">
       <FixedImage imageUrl="/services/services9-images/banner.avif" />
@@ -37,7 +40,8 @@ const page = () => {
                   <motion.div
                     whileHover={{ scale: 1.03 }}
                     transition={{ duration: 0.3 }}
-                    className="group overflow-hidden rounded-2xl bg-gray-100"
+                    className="group overflow-hidden rounded-2xl bg-gray-100 cursor-pointer"
+                    onClick={() => setSelectedImage(image)}
                   >
                     <Image
                       src={image}
@@ -53,6 +57,12 @@ const page = () => {
           <RelativeLinks/>
         </div>
       </div>
+
+      <ImageLightbox
+        src={selectedImage ?? ""}
+        isOpen={selectedImage !== null}
+        onClose={() => setSelectedImage(null)}
+      />
     </div>
   )
 }

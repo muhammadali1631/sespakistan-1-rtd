@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "motion/react";
 import FadeIn from "../motion/FadeIn";
 import StaggerContainer, { StaggerItem } from "../motion/StaggerContainer";
+import ImageLightbox from "../ui/ImageLightbox";
 
 const ProjectImages = [
   {
@@ -37,7 +38,7 @@ const ProjectImages = [
     image: "/home/major-project/major-project-img8.avif",
   },
   {
-    image: "/home/major-project/new-image5.avif",
+    image: "/home/major-project/new-8.jpeg",
   },
   {
     image: "/home/major-project/new-image-9.avif",
@@ -48,6 +49,8 @@ const ProjectImages = [
 ];
 
 const MajorProjects = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
     <div className="flex flex-col lg:flex-row justify-between items-center mx-0 lg:mx-10 gap-10 mt-5 pb-10">
       <FadeIn direction="left" className="w-full px-4 sm:px-0 lg:max-w-[900px]">
@@ -119,7 +122,8 @@ const MajorProjects = () => {
             <motion.div
               whileHover={{ scale: 1.08, rotate: 1 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="relative h-40 w-32 sm:h-72 sm:w-50 overflow-hidden rounded-3xl"
+              className="relative h-40 w-32 sm:h-72 sm:w-50 overflow-hidden rounded-3xl cursor-pointer"
+              onClick={() => setSelectedImage(item.image)}
             >
               <Image
                 src={item.image}
@@ -133,6 +137,12 @@ const MajorProjects = () => {
           </StaggerItem>
         ))}
       </StaggerContainer>
+
+      <ImageLightbox
+        src={selectedImage ?? ""}
+        isOpen={selectedImage !== null}
+        onClose={() => setSelectedImage(null)}
+      />
     </div>
   );
 };

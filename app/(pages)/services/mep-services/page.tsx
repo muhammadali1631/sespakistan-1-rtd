@@ -3,8 +3,9 @@
 import RelativeLinks from "@/components/RelativeLinks";
 import FixedImage from "@/components/services/FixedImage";
 import ImageBanner from "@/components/services/ImageBanner";
+import ImageLightbox from "@/components/ui/ImageLightbox";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "motion/react";
 import FadeIn from "@/components/motion/FadeIn";
 import StaggerContainer, { StaggerItem } from "@/components/motion/StaggerContainer";
@@ -63,6 +64,8 @@ const ProjectImages = [
 ];
 
 const page = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
     <div className="mt-20 lg:mt-36">
       <FixedImage imageUrl="/services/services2-images/hero.avif" />
@@ -124,7 +127,7 @@ const page = () => {
             <StaggerContainer staggerDelay={0.08} className="grid grid-cols-2 gap-4 sm:gap-6">
               {projectImages1.map((item, index) => (
                 <StaggerItem key={index}>
-                    <motion.div whileHover={{ scale: 1.04 }} transition={{ duration: 0.3 }}>
+                    <motion.div whileHover={{ scale: 1.04 }} transition={{ duration: 0.3 }} className="cursor-pointer" onClick={() => setSelectedImage(item)}>
                         <Image
                           src={item}
                           height={300}
@@ -173,7 +176,7 @@ const page = () => {
               <StaggerContainer staggerDelay={0.08} className="grid grid-cols-2 gap-4 sm:gap-6">
                 {projectImages2.map((item, index) => (
                   <StaggerItem key={index}>
-                      <motion.div whileHover={{ scale: 1.04 }} transition={{ duration: 0.3 }}>
+                      <motion.div whileHover={{ scale: 1.04 }} transition={{ duration: 0.3 }} className="cursor-pointer" onClick={() => setSelectedImage(item)}>
                           <Image
                             src={item}
                             height={300}
@@ -200,7 +203,7 @@ const page = () => {
             <StaggerContainer staggerDelay={0.05} className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:grid-cols-5 pt-8">
               {ProjectImages.map((image, idx) => (
                 <StaggerItem key={idx}>
-                    <motion.div whileHover={{ scale: 1.06 }} transition={{ duration: 0.3 }}>
+                    <motion.div whileHover={{ scale: 1.06 }} transition={{ duration: 0.3 }} className="cursor-pointer" onClick={() => setSelectedImage(image)}>
                         <Image
                           src={image}
                           alt="Project image"
@@ -217,6 +220,12 @@ const page = () => {
           <RelativeLinks/>
         </div>
       </div>
+
+      <ImageLightbox
+        src={selectedImage ?? ""}
+        isOpen={selectedImage !== null}
+        onClose={() => setSelectedImage(null)}
+      />
     </div>
   );
 };

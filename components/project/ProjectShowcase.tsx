@@ -1,10 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
 import FadeIn from "../motion/FadeIn";
 import StaggerContainer, { StaggerItem } from "../motion/StaggerContainer";
+import ImageLightbox from "../ui/ImageLightbox";
 
 
 interface GalleryImage {
@@ -26,13 +27,15 @@ const ProjectShowcase = ({
   data: ProjectShowcaseProps;
   id: number;
 }) => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
     <section
       className={`w-full  p-6 sm:p-8 ${id !== 9 && "border-b-4 border-[#033268]"}`}
     >
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {/* Main image */}
-        <FadeIn direction="left" className="relative order-1 aspect-[4/3] w-full overflow-hidden rounded-lg md:order-1">
+        <FadeIn direction="left" className="relative order-1 aspect-[4/3] w-full overflow-hidden rounded-lg md:order-1 cursor-pointer" onClick={() => setSelectedImage(data.mainImage.src)}>
           <Image
             src={data.mainImage.src}
             alt={data.mainImage.alt}
@@ -47,10 +50,10 @@ const ProjectShowcase = ({
           <h2 className="text-lg font-bold text-slate-900 pt-5 sm:text-3xl">
             {data.title}
           </h2>
-          {id === 8 &&
+          {/* {id === 8 &&
           <h4 className="text-sm font-semibold text-slate-900 pt-5 sm:text-xl">
             Project works executed through appointed main contractor
-          </h4>}
+          </h4>} */}
           {id === 9 &&
           <h4 className="text-sm font-semibold text-slate-900 pt-5 sm:text-xl">
             Telecom Foundation Building, 2nd & 3rd Floor, G-9, Islamabad
@@ -83,7 +86,8 @@ const ProjectShowcase = ({
                 <motion.div
                   whileHover={{ scale: 1.08 }}
                   transition={{ type: "spring", stiffness: 300 }}
-                  className="relative aspect-square w-full overflow-hidden rounded-md"
+                  className="relative aspect-square w-full overflow-hidden rounded-md cursor-pointer"
+                  onClick={() => setSelectedImage(img.src)}
                 >
                   <Image
                     src={img.src}
@@ -97,6 +101,12 @@ const ProjectShowcase = ({
           ))}
         </StaggerContainer>
       </div>
+
+      <ImageLightbox
+        src={selectedImage ?? ""}
+        isOpen={selectedImage !== null}
+        onClose={() => setSelectedImage(null)}
+      />
     </section>
   );
 };

@@ -1,13 +1,16 @@
 "use client";
 
 import RelativeLinks from "@/components/RelativeLinks";
+import ImageLightbox from "@/components/ui/ImageLightbox";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "motion/react";
 import FadeIn from "@/components/motion/FadeIn";
 
 const page = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
     <div className="mt-20 lg:mt-36">
       <Image
@@ -90,7 +93,8 @@ const page = () => {
                 alt="Project"
                 height={500}
                 width={400}
-                className="h-[320px] sm:h-[420px] lg:h-[500px] w-[85vw] max-w-[440px] sm:w-[440px] object-cover rounded-4xl"
+                className="h-[320px] sm:h-[420px] lg:h-[500px] w-[85vw] max-w-[440px] sm:w-[440px] object-cover rounded-4xl cursor-pointer"
+                onClick={() => setSelectedImage("/services/services5-images/image1.avif")}
               />
             </FadeIn>
           </div>
@@ -196,7 +200,8 @@ const page = () => {
                 alt="Project"
                 height={500}
                 width={400}
-                className="h-[320px] sm:h-[420px] lg:h-[500px] w-[85vw] max-w-[440px] sm:w-[440px] object-cover rounded-4xl"
+                className="h-[320px] sm:h-[420px] lg:h-[500px] w-[85vw] max-w-[440px] sm:w-[440px] object-cover rounded-4xl cursor-pointer"
+                onClick={() => setSelectedImage("/services/services5-images/image2.avif")}
               />
             </FadeIn>
           </div>
@@ -263,7 +268,8 @@ const page = () => {
                 alt="Project"
                 height={500}
                 width={400}
-                className="h-[320px] sm:h-[420px] lg:h-[500px] w-[85vw] max-w-[440px] sm:w-[440px] object-cover rounded-4xl"
+                className="h-[320px] sm:h-[420px] lg:h-[500px] w-[85vw] max-w-[440px] sm:w-[440px] object-cover rounded-4xl cursor-pointer"
+                onClick={() => setSelectedImage("/services/services5-images/image2.avif")}
               />
             </FadeIn>
           </div>
@@ -271,6 +277,12 @@ const page = () => {
           <RelativeLinks/>
         </div>
       </div>
+
+      <ImageLightbox
+        src={selectedImage ?? ""}
+        isOpen={selectedImage !== null}
+        onClose={() => setSelectedImage(null)}
+      />
     </div>
   );
 };
